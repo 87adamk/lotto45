@@ -1,13 +1,13 @@
 {
-  "name": "lotto45",
+  "name": "Lotto45",
   "version": "0.0.1",
   "description": "Make 6 number in 45 lotto number",
   "engines": {
     "node": "5.9.1"
   },
-  "main": "lottoServer.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node lottoServer.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "ejs": "2.4.1",
