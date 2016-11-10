@@ -25,8 +25,8 @@
 <script type="text/javascript" src="jsqrcode/src/findpat.js"></script>
 <script type="text/javascript" src="jsqrcode/src/alignpat.js"></script>
 <script type="text/javascript" src="jsqrcode/src/databr.js"></script>
-<script type="text/javascript">
 
+<script type="text/javascript">
 $(document).ready(function(){
     qrcode.callback = read;
     function read(a)
@@ -144,39 +144,40 @@ $(document).ready(function(){
 </script>
 
 <body>
-  <div id="main">
-    <div style="text-align: center; margin-top: 20px">
-      <font size="100">Lotto 45</font>
-    </div>
-    <div style="text-align: right; margin: 20px">
-      <button onclick="makeNumber();" style="width: 200px;">생성</button>
-    </div>
-    <div style="text-align: center;">
-      <img id="number_field_1"/>
-      <img id="number_field_2"/>
-      <img id="number_field_3"/>
-      <img id="number_field_4"/>
-      <img id="number_field_5"/>
-      <img id="number_field_6"/>
-    </div>
-  </div>
-
   <div data-role="page" data-theme="d">
+    <div id="main">
+      <div style="text-align: center; margin-top: 20px">
+        <font size="100">Lotto 45</font>
+      </div>
+      <div style="text-align: right; margin: 20px">
+        <button onclick="makeNumber();" style="width: 200px;">생성</button>
+      </div>
+      <div style="text-align: center;">
+        <img id="number_field_1"/>
+        <img id="number_field_2"/>
+        <img id="number_field_3"/>
+        <img id="number_field_4"/>
+        <img id="number_field_5"/>
+        <img id="number_field_6"/>
+      </div>
+    </div>
+
     <div style="margin: 20px;">
       <fieldset>
-        <label for ="photo"><b>Choose a QR Code image to get it decoded:</b></label>
+        <label for="photo"><b>Choose a QR Code image to get it decoded:</b></label>
         <br/>
         <input type="file" name="photo" id="photo" value="" capture="camera">
       </fieldset>
      </div>
 
-    <div id="result" style="margin:20px;text-align:center;padding:10px;border-radius:5px;background:#F1F1F1;word-wrap:break-word;display:none;"></div>
+    <div id="result" style="margin:20px;text-align:center;padding:10px;border-radius:5px;background:#F1F1F1;word-wrap:break-word;display:none;">
+    </div>
     <div id="processing" style="text-align:center; margin-top: 20px; display:none;">
       <img style="vertical-align:middle" src="ajax-loader.gif"> <i>Processing</i>
     </div>
     <div id="logoname" style="margin-top:40px;text-align:center;">
-          <a style="font-size:small;color:#48001F; text-align:center;" href="http://m.qryptal.com/A/AC7ENN4S/">Qryptal</a>
-     </div>
+      <a style="font-size:small;color:#48001F; text-align:center;" href="http://m.qryptal.com/A/AC7ENN4S/">Qryptal</a>
     </div>
+  </div>
 </body>
 </html>
