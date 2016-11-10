@@ -5,22 +5,24 @@
 <html>
 <head>
   <% include ../partials/header.ejs %>
-  <script type="text/javascript" src="../utils/common.js"></script>
 </head>
-
+<script type="text/javascript">
+  require('../utils/common.js');
+</script>
 <body>
 
-<div id="main">
-  <H1>Lotto 45</H1>
-  <button onclick="makeNumber();">생성</button>
-  <div>
-    <img id="number_field_1"/>
-    <img id="number_field_2"/>
-    <img id="number_field_3"/>
-    <img id="number_field_4"/>
-    <img id="number_field_5"/>
-    <img id="number_field_6"/>
+  <div id="main">
+    <H1>Lotto 45</H1>
+    <button onclick="makeNumber();">생성</button>
+    <div>
+      <img id="number_field_1"/>
+      <img id="number_field_2"/>
+      <img id="number_field_3"/>
+      <img id="number_field_4"/>
+      <img id="number_field_5"/>
+      <img id="number_field_6"/>
+    </div>
   </div>
-</div>
+
 </body>
 </html>
