@@ -8,26 +8,29 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.
   <% include ../partials/header.ejs %>
 </head>
 <script type="text/javascript">
-  var myWidth = 0, myHeight = 0;
 
-  if( typeof( window.innerWidth ) == 'number' ) {
-    //Non-IE
-    myWidth = window.innerWidth;
-    myHeight = window.innerHeight;
-  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
-    //IE 6+ in 'standards compliant mode'
-    myWidth = document.documentElement.clientWidth;
-    myHeight = document.documentElement.clientHeight;
-  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-    //IE 4 compatible
-    myWidth = document.body.clientWidth;
-    myHeight = document.body.clientHeight;
+  function resolutionResize() {
+    
+    var myWidth = 0, myHeight = 0;
+
+    if( typeof( window.innerWidth ) == 'number' ) {
+      //Non-IE
+      myWidth = window.innerWidth;
+      myHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+      //IE 6+ in 'standards compliant mode'
+      myWidth = document.documentElement.clientWidth;
+      myHeight = document.documentElement.clientHeight;
+    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+      //IE 4 compatible
+      myWidth = document.body.clientWidth;
+      myHeight = document.body.clientHeight;
+    }
+   
+    // div 에 쌓여진 영역 화면 조정 
+    Var deviceWidth = myWidth;
+    document.getElementById('main').style.width = deviceWidth + "px";
   }
- 
-  // div 에 쌓여진 영역 화면 조정 
-  Var deviceWidth = myWidth;
-  document.getElementById('main').style.width = deviceWidth + "px";
-
 
   function makeNumber() {
      // 6개의 로또 번호를 저장할 배열
@@ -54,6 +57,7 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.
        mFlag = true;
      } 
 
+     alert(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
      $("#number").val(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
   }
 
