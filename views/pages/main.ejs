@@ -30,10 +30,25 @@
     document.getElementById('main').style.width = deviceWidth + "px";
   }
 
+  function bubbleSort(array)
+  {
+      var swapped;
+      do {
+          swapped = false;
+          for (var i=0; i < array.length-1; i++) {
+              if (array[i] > array[i+1]) {
+                  var temp = array[i];
+                  array[i] = array[i+1];
+                  array[i+1] = temp;
+                  swapped = true;
+              }
+          }
+      } while (swapped);
+  }
+
   function makeNumber() {
      // 6개의 로또 번호를 저장할 배열
       var lotto = new Array(6);
-      var lottoImg = new Array(6);
      // 추첨된 로또번호의 갯수
       var count = 0;
      // 번호중복 방지용 변수
@@ -51,18 +66,17 @@
        if(mFlag)
        {
             lotto[count] = number;
-            lottoImg[count] = "http://www.nlotto.co.kr/img/common/ball_"+number+".png";
             count++;
        }
        mFlag = true;
      } 
 
-     //alert(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
-     //$("#numberDiv").html(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
+     bubbleSort(lotto);
+
      for(var i=0; i<6; i++) {
 
         var id = "number_field_"+(i+1);
-        $("#"+id).attr("src", lottoImg[i]);
+        $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[i]+".png";);
      }
   }
 
