@@ -1,9 +1,34 @@
 <!DOCTYPE html>
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi" />
+<meta name="apple-mobile-web-app-capable" content="no" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <html>
 <head>
   <% include ../partials/header.ejs %>
 </head>
 <script type="text/javascript">
+
+ var myWidth = 0, myHeight = 0;
+  if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    myWidth = window.innerWidth;
+    myHeight = window.innerHeight;
+  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    myWidth = document.documentElement.clientWidth;
+    myHeight = document.documentElement.clientHeight;
+  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    myWidth = document.body.clientWidth;
+    myHeight = document.body.clientHeight;
+}
+ 
+// div 에 쌓여진 영역 화면 조정 
+Var deviceWidth = myWidth;
+document.getElementById('divwidth').style.width = deviceWidth + "px";
+
+
   function makeNumber() {
     alert("너흰 아직 준비가 안됐다.");
   }
