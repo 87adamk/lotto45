@@ -8,6 +8,7 @@
 </head>
 <script type="text/javascript">
 
+  function mobileResize() {
     var myWidth = 0, myHeight = 0;
 
     if( typeof( window.innerWidth ) == 'number' ) {
@@ -27,6 +28,7 @@
     // div 에 쌓여진 영역 화면 조정 
     var deviceWidth = myWidth;
     document.getElementById('main').style.width = deviceWidth + "px";
+  }
 
   function makeNumber() {
      // 6개의 로또 번호를 저장할 배열
@@ -53,7 +55,8 @@
        mFlag = true;
      } 
 
-     alert(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
+     //alert(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
+     $("#numberDiv").html(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
   }
 
 </script>
@@ -62,7 +65,7 @@
 <div id="main">
   <H1>로또번호 생성기</H1>
   <button onclick="makeNumber();">생성</button>
-  <div id="number"></div>
+  <div id="numberDiv"></div>
 </div>
 </body>
 </html>
