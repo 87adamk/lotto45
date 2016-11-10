@@ -76,6 +76,7 @@
 
         var id = "number_field_"+(i+1);
         $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[i]+".png");
+        $("#"+id).attr("alt", lotto[i]);
      }
   }
 </script>
@@ -83,8 +84,8 @@
 
   <div id="main">
     <div style="text-align: center;">
-      <H1>Lotto 45</H1>
-      <button onclick="makeNumber();" style="float: left">생성</button>      
+      <font style="font-size: 30">Lotto 45</font>
+      <button onclick="makeNumber();">생성</button>      
     </div>
     <div>
       <img id="number_field_1"/>
