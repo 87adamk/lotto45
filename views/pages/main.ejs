@@ -33,6 +33,7 @@
   function makeNumber() {
      // 6개의 로또 번호를 저장할 배열
       var lotto = new Array(6);
+      var lottoImg = new Array(6);
      // 추첨된 로또번호의 갯수
       var count = 0;
      // 번호중복 방지용 변수
@@ -50,22 +51,35 @@
        if(mFlag)
        {
             lotto[count] = number;
+            lottoImg[count] = "http://www.nlotto.co.kr/img/common/ball_"+number+".png";
             count++;
        }
        mFlag = true;
      } 
 
      //alert(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
-     $("#numberDiv").html(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
+     //$("#numberDiv").html(lotto[0]+', '+lotto[1]+', '+lotto[2]+', '+lotto[3]+', '+lotto[4]+', '+lotto[5]);
+     for(int i=0; i < 6; i++) {
+
+        var id = "number_field_"+i;
+        $("#"+id).attr("src", lottoImg[i]);
+     }
   }
 
 </script>
 <body>
 
 <div id="main">
-  <H1>로또번호 생성기</H1>
+  <H1>Lotto 45</H1>
   <button onclick="makeNumber();">생성</button>
-  <div id="numberDiv"></div>
+  <div>
+    <img id="number_field_1"/>
+    <img id="number_field_2"/>
+    <img id="number_field_3"/>
+    <img id="number_field_4"/>
+    <img id="number_field_5"/>
+    <img id="number_field_6"/>
+  </div>
 </div>
 </body>
 </html>
