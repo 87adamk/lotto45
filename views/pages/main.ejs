@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
 <meta name="apple-mobile-web-app-capable" content="no" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <html>
@@ -7,8 +7,6 @@
   <% include ../partials/header.ejs %>
 </head>
 <script type="text/javascript">
-
-  function resolutionResize() {
 
     var myWidth = 0, myHeight = 0;
 
@@ -29,7 +27,6 @@
     // div 에 쌓여진 영역 화면 조정 
     Var deviceWidth = myWidth;
     document.getElementById('main').style.width = deviceWidth + "px";
-  }
 
   function makeNumber() {
      // 6개의 로또 번호를 저장할 배열
