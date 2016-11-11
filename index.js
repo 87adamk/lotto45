@@ -17,7 +17,7 @@ request({url: oriUrl, encoding: null}, function(error, res, html) {
 	var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 	
 	var lastNum  = parseInt($("#drwNoStart option:first").val());
-	var firstNum  = lastNum - 4;
+	var firstNum  = eval(lastNum-4);
 	crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
 });
 
