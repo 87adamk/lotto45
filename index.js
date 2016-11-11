@@ -18,9 +18,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
- 	res.render('pages/main');
 
-	request({url: oriUrl, encoding: null}, function(error, res, html) {
+ 	res.render('pages/main', fucntion(request) {
+ 		request({url: oriUrl, encoding: null}, function(error, res, html) {
 		if (error) {
 			throw error
 		}
@@ -30,7 +30,8 @@ app.get('/', function(req, res) {
 		var lastNum  = parseInt($("#drwNoEnd").val());
 		var firstNum  = lastNum-4;
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
-	});
+		});
+ 	});
 });
 
 app.get('/test', function(req, res) {
