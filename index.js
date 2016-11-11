@@ -16,8 +16,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-  res.render('pages/index');
-	
+  	
 	var url = 'http://blog.saltfactory.net';
 	request(url, function(error, res, html){
 		if (error) {throw error};
@@ -25,6 +24,8 @@ app.get('/test', function(req, res) {
 		console.log (html);
 
 	});
+
+	res.render('pages/index');
 });
 
 app.listen(app.get('port'), function() {
