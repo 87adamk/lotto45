@@ -36,9 +36,8 @@ app.get('/test', function(req, res) {
 		var lastNum  = parseInt($("#drwNoEnd").val());
 		var firstNum  = lastNum-4;
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
-		})
 
-	request({url: crawlUrl, encoding: null}, function(error, res, html) {
+		request({url: crawlUrl, encoding: null}, function(error, res, html) {
 		if (error) {
 			throw error
 		}
@@ -49,6 +48,10 @@ app.get('/test', function(req, res) {
 		
 		tHtml = "<table>" + $("table.tblType1").html() + "</table>";
 	})
+		
+		})
+
+	
 
 	res.send(tHtml);
 });
