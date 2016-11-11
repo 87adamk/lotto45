@@ -41,15 +41,12 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-
-	getHistory();
- 	
  	res.render('pages/main');
-
- 	$("div#histroy").text(tHtml);
 });
 
 app.get('/test', function(req, res) {	
+
+	getHistory();
 	res.send(tHtml);
 });
 
