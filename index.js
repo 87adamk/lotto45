@@ -11,7 +11,7 @@ request(url, function(error, res, html){
 
 		//console.log (html);
 		var $ = cheerio.load(html);
-		cHtml = $("table.tblType1 mt40").html();
+		cHtml = $(".tblType1 mt40").html();
 		//res.send(cHtml);
 });
 
