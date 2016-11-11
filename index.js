@@ -7,7 +7,7 @@ var iconv = new Iconv('euc-kr', 'utf-8//translit//ignore');
 
 var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
 var crawlUrl;
-var tHtml;
+var msg;
 
 function getHistory() {
 	request({url: oriUrl, encoding: null}, function(error, res, html) {
@@ -26,7 +26,12 @@ function getHistory() {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
-			tHtml = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").html();
+			msg = "messages:[";
+			$("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").foreach(function(){
+				msg = msg + '{number: '+$(this).text()+'},';
+			})
+			msg= msg.substring(0, msg.length - 1);  
+			msg= msg + ']';
 		})
 
 	})
@@ -44,13 +49,13 @@ app.get('/', function(req, res) {
 
 	getHistory();
 
- 	res.render('pages/main', {history: tHtml});
+ 	res.render('pages/main', {history: msg});
 });
 
 app.get('/test', function(req, res) {	
 
 	getHistory();
-	res.send(tHtml);
+	res.send(msg);
 });
 
 app.listen(app.get('port'), function() {
