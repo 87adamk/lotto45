@@ -43,14 +43,14 @@ app.get('/test', function(req, res) {
 		var lastNum  = parseInt($("#drwNoEnd").val());
 		var firstNum  = lastNum-4;
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
-	});
-		
+		})
+
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
 		tHtml = "<table>" + $("table.tblType1").html() + "</table>";
-	});
+	})
 
-	res.send(t);
+	res.send(tHtml);
 });
 
 app.listen(app.get('port'), function() {
