@@ -26,7 +26,7 @@ function getHistory() {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
-			tHtml = "<table>" + $("table.tblType1").html() + "</table>";
+			tHtml = $("table.tblType1").html();
 		})
 
 	})
@@ -41,12 +41,15 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
- 	res.render('pages/main');
+
+	getHistory();
+
+ 	res.render('pages/main', {history: tHtml});
 });
 
 app.get('/test', function(req, res) {	
 
-	getHistory();
+	
 	res.send(tHtml);
 });
 
