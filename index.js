@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var cheerio = require('cheerio');
 var request = require('request');
+var Iconv = require('iconv').Iconv;
+var iconv = new Iconv('EUC-KR', "UTF-8");
 
 var url = 'http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727';
 var cHtml;
@@ -10,7 +12,7 @@ request(url, function(error, res, html){
 	if (error) {throw error};
 
 		//console.log (html);
-		var $ = cheerio.load(html);
+		var $ = cheerio.load(iconv(html));
 		cHtml = $(".tblType1 mt40").html();
 		//res.send(cHtml);
 });
