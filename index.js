@@ -5,18 +5,20 @@ var request = require('request');
 var Iconv = require('iconv').Iconv;
 var iconv = new Iconv('euc-kr', 'utf-8//translit//ignore');
 
-var crawlUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727";
+var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
+var crawlUrl;
 var tHtml;
 
-request({url: crawlUrl, encoding: null}, function(error, res, html) {
+request({url: oriUrl, encoding: null}, function(error, res, html) {
 	if (error) {
 		throw error
 	}
 	
 	var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 	
-	tHtml = "<table>" + $("table.tblType1").html() + "</table>";
-	 
+	var lastNum  = $("#drwNoStart option:first").val();
+	var firstNum  = lastNum - 4;
+	crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
 });
 
 app.set('port', (process.env.PORT || 5000));
@@ -32,7 +34,17 @@ app.get('/', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-	//res.render('pages/main2');
+	
+	request({url: crawlUrl, encoding: null}, function(error, res, html) {
+		if (error) {
+			throw error
+		}
+		
+		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
+		
+		tHtml = "<table>" + $("table.tblType1").html() + "</table>";
+	});
+
 	res.send(tHtml);
 });
 
