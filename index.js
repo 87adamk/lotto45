@@ -15,7 +15,7 @@ request({url: crawlUrl, encoding: null}, function(error, res, html) {
 	
 	var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 	
-	$("#test").text($(".tblType1 mt40").html());
+	$("div#test").text($("table.tblType1 mt40").text());
 });
 
 app.set('port', (process.env.PORT || 5000));
@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-	res.send(cHtml);
+	res.render('pages/main2');
 });
 
 app.listen(app.get('port'), function() {
