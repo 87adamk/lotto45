@@ -25,13 +25,10 @@ function getHistory() {
 			if (error) { throw error }
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
-		
-			msg = "messages:[";
+					
 			$("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").foreach(function(){
-				msg = msg + '{number: '+$(this).text()+'},';
+				msg = msg + $(this).text();
 			})
-			msg= msg.substring(0, msg.length - 1);  
-			msg= msg + ']';
 		})
 
 	})
