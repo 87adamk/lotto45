@@ -19,14 +19,15 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {
 	res.render('pages/index');
-});
 
-request(url, function(error, res, html){
+	console.log('logging test');
+	request(url, function(error, res, html){
 		if (error) {throw error};
 
 		console.log (html);
 
 	});
+});
 
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
