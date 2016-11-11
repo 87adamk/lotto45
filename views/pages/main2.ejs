@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>JavaScript file upload</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="jsqrcode/src/grid.js"></script>
+<script type="text/javascript" src="jsqrcode/src/version.js"></script>
+<script type="text/javascript" src="jsqrcode/src/detector.js"></script>
+<script type="text/javascript" src="jsqrcode/src/formatinf.js"></script>
+<script type="text/javascript" src="jsqrcode/src/errorlevel.js"></script>
+<script type="text/javascript" src="jsqrcode/src/bitmat.js"></script>
+<script type="text/javascript" src="jsqrcode/src/datablock.js"></script>
+<script type="text/javascript" src="jsqrcode/src/bmparser.js"></script>
+<script type="text/javascript" src="jsqrcode/src/datamask.js"></script>
+<script type="text/javascript" src="jsqrcode/src/rsdecoder.js"></script>
+<script type="text/javascript" src="jsqrcode/src/gf256poly.js"></script>
+<script type="text/javascript" src="jsqrcode/src/gf256.js"></script>
+<script type="text/javascript" src="jsqrcode/src/decoder.js"></script>
+<script type="text/javascript" src="jsqrcode/src/QRCode.js"></script>
+<script type="text/javascript" src="jsqrcode/src/findpat.js"></script>
+<script type="text/javascript" src="jsqrcode/src/alignpat.js"></script>
+<script type="text/javascript" src="jsqrcode/src/databr.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    qrcode.callback = read;
+    function read(a)
+    {
+        var ahtml = '';
+        if (a.match(/^http/i) !== null){
+            //make it a href
+            ahtml = 'Click to view page<br/><br/>';
+            ahtml += '<a href="'+a+'">'+a+'</a>';
+        }else{
+            //just print in div
+            if (a.match(/^error/i) !== null){
+                ahtml = '<span style="color:#FF0000;">'+a+'</span>';
+            }else{
+                ahtml = a;
+            }
+        }
+        $('div#processing').hide();
+        $('div#result').html(ahtml).show();
+        $('input#photo').val('');
+    }
+
+    function handleFiles(file){
+        var reader = new FileReader();
+        reader.onload=(function(theFile){
+            return function(e){
+                qrcode.decode(e.target.result);
+            }
+        })(file);
+        reader.readAsDataURL(file);
+    }
+
+    $('#photo').change(function(){
+        //console.log(this.files[0]);
+        $('div#processing').show();
+        handleFiles(this.files[0]);
+    });
+});
+
+</script>
+</head>
+<body>
+<div data-role="page" data-theme="d">
+<div style="margin: 20px;">
+  <fieldset>
+    <label for ="photo"><b>Choose a QR Code image to get it decoded:</b></label>
+    <br/>
+    <input type="file" name="photo" id="photo" value="" capture="camera">
+  </fieldset>
+ </div>
+
+<div id="result" style="margin:20px;text-align:center;padding:10px;border-radius:5px;background:#F1F1F1;word-wrap:break-word;display:none;"></div>
+<div id="processing" style="text-align:center; margin-top: 20px; display:none;">
+  <img style="vertical-align:middle" src="ajax-loader.gif"> <i>Processing</i>
+</div>
+<div id="logoname" style="margin-top:40px;text-align:center;">
+      <a style="font-size:small;color:#48001F; text-align:center;" href="http://m.qryptal.com/A/AC7ENN4S/">Qryptal</a>
+ </div>
+</div>
+</body>
+</html>
