@@ -4,18 +4,19 @@ var cheerio = require('cheerio');
 var request = require('request');
 var Iconv = require('iconv').Iconv;
 var iconv = new Iconv('euc-kr', 'utf-8//tranlit//ignore');
-
+/*
 var options = {  
   url: "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727",
   headers: {  	
     "Host": "www.nlotto.co.kr"
   },
    encoding: null
-};
+};*/
 
+var crawlUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727";
 var cHtml;
 
-request.get(options, function(error, res, html) {
+request({url: crawlUrl, encoding: null},function(error, res, html) {
 	if (error) {throw error};
 	cHtml = iconv.convert(html).toString();
 });
