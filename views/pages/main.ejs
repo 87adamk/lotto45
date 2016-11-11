@@ -141,6 +141,10 @@ $(document).ready(function(){
         $("#"+id).attr("alt", lotto[i]);
      }
   }
+
+  function loadCamera() {
+    $("#photo").click();
+  }
 </script>
 
 <body>
@@ -164,9 +168,10 @@ $(document).ready(function(){
 
     <div style="margin: 20px;">
       <fieldset>
-        <label for="photo"><b>Choose a QR Code image to get it decoded:</b></label>
+        <label for="photo"><b>QRCode 당첨확인</b></label>
         <br/>
-        <input type="file" name="photo" id="photo" value="" capture="camera">
+        <button onclick="loadCamera();">QR Code</button>
+        <input type="file" name="photo" id="photo" value="" capture="camera" style="display: none;">
       </fieldset>
      </div>
 
@@ -174,11 +179,6 @@ $(document).ready(function(){
     </div>
     <div id="processing" style="text-align:center; margin-top: 20px; display:none;">
       <img style="vertical-align:middle" src="ajax-loader.gif"> <i>Processing</i>
-    </div>
-    <div id="logoname" style="margin-top:40px;text-align:center;">
-      <a style="font-size:small;color:#48001F; text-align:center;" href="http://m.qryptal.com/A/AC7ENN4S/">Qryptal</a>
-    </div>
-    <div id="log">
     </div>
   </div>
 </body>

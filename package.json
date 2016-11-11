@@ -1,7 +1,7 @@
 {
   "name": "Lotto45",
-  "version": "0.0.1",
-  "description": "Make 6 number in 45 lotto number",
+  "version": "0.1.0",
+  "description": "Make your  6 lotto number in 45 number",
   "engines": {
     "node": "5.9.1"
   },
