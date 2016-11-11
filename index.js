@@ -27,11 +27,10 @@ app.get('/test', function(req, res) {
 		cHtml = html;
 		var $ = cheerio.load(html);
 
-		$("#test").html(cHtml);
-
+		res.send(cHtml);
 	});
-	res.render('pages/main2');
-	//res.send(cHtml);
+	//res.render('pages/main2');
+	res.send("Hello World");
 
 });
 
