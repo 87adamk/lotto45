@@ -34,10 +34,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-
-	res.setEncoding('utf8');
 	res.send(cHtml);
-
 });
 
 app.listen(app.get('port'), function() {
