@@ -65,7 +65,6 @@ $(document).ready(function(){
         handleFiles(this.files[0]);
     });
 
-    $('#historyTable').html($("#dataSet").text());
 });
 
 </script>
@@ -182,7 +181,7 @@ $(document).ready(function(){
       <img style="vertical-align:middle" src="ajax-loader.gif"> <i>Processing</i>
     </div>
     <div>
-      <div type="text" id="dataSet"><%= history %></div>
+      <div type="text" id="dataSet"><%= message %></div>
     </div>
   </div>
 </body>
