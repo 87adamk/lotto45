@@ -8,20 +8,6 @@ var iconv = new Iconv('euc-kr', 'utf-8//translit//ignore');
 var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
 var crawlUrl;
 var tHtml;
-var t;
-
-request({url: oriUrl, encoding: null}, function(error, res, html) {
-	if (error) {
-		throw error
-	}
-	
-	var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
-	
-	t = $("#drwNoEnd").val();
-	var lastNum  = parseInt($("#drwNoEnd").val());
-	var firstNum  = lastNum;
-	crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
-});
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -33,11 +19,23 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
  	res.render('pages/main');
+
+	request({url: oriUrl, encoding: null}, function(error, res, html) {
+		if (error) {
+			throw error
+		}
+		
+		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
+		
+		var lastNum  = parseInt($("#drwNoEnd").val());
+		var firstNum  = lastNum-4;
+		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
+	});
 });
 
 app.get('/test', function(req, res) {
 	
-	/*request({url: crawlUrl, encoding: null}, function(error, res, html) {
+	request({url: crawlUrl, encoding: null}, function(error, res, html) {
 		if (error) {
 			throw error
 		}
@@ -45,7 +43,7 @@ app.get('/test', function(req, res) {
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
 		tHtml = "<table>" + $("table.tblType1").html() + "</table>";
-	});*/
+	});
 
 	res.send(t);
 });
