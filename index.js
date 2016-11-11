@@ -15,7 +15,9 @@ request({url: crawlUrl, encoding: null}, function(error, res, html) {
 	
 	var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 	
-	cHtml = $("table.tblType1 mt40").text();
+	//cHtml = $("table.tblType1").text();
+	cHtml = $("#02-01-01>span").text();
+	 
 });
 
 app.set('port', (process.env.PORT || 5000));
