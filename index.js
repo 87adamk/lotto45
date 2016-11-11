@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var cheerio = require('cheerio');
-var req = require('request');
+var request = require('request');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -11,15 +11,15 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/main');
+app.get('/', function(req, res) {
+  res.render('pages/main');
 });
 
-app.get('/test', function(request, response) {
-  response.render('pages/main');
+app.get('/test', function(req, res) {
+  res.render('pages/index');
 	
 	var url = 'http://blog.saltfactory.net';
-	request(url, function(error, response, html){
+	request(url, function(error, res, html){
 		if (error) {throw error};
 
 		console.log (html);
