@@ -3,20 +3,19 @@ var app = express();
 var cheerio = require('cheerio');
 var request = require('request');
 var Iconv = require('iconv').Iconv;
-var iconv = new Iconv('EUC-KR', "UTF-8");
+var iconv = new Iconv('euc-kr', "utf-8//tranlit//ignore");
 
-var url = 'http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727';
+var options = {  
+  url = 'http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727',
+   encoding: null
+};
+
 var cHtml;
-request(url, function(error, res, html){
 
+request.get(options, function(error, res, html) {
 	if (error) {throw error};
-
-		//console.log (html);
-		cHtml = iconv.convert(html);
-		//var $ = cheerio.load(iconv.convert(html));
-		//cHtml = $(".tblType1 mt40").html();
-		//res.send(cHtml);
-});
+	cHtml = iconv.convert(html).toString();
+})
 
 app.set('port', (process.env.PORT || 5000));
 
