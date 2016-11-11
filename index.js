@@ -18,7 +18,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/test', function(req, res) {
-	res.render('pages/index');
 
 	console.log('logging test');
 	request(url, function(error, res, html){
@@ -27,6 +26,9 @@ app.get('/test', function(req, res) {
 		console.log (html);
 
 	});
+	
+	res.render('pages/index');
+
 });
 
 app.listen(app.get('port'), function() {
