@@ -12,8 +12,9 @@ request(url, function(error, res, html){
 	if (error) {throw error};
 
 		//console.log (html);
-		var $ = cheerio.load(iconv.convert(html));
-		cHtml = $(".tblType1 mt40").html();
+		cHtml = iconv.convert(html);
+		//var $ = cheerio.load(iconv.convert(html));
+		//cHtml = $(".tblType1 mt40").html();
 		//res.send(cHtml);
 });
 
