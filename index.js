@@ -26,7 +26,7 @@ function getHistory() {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
-			tHtml = $("table.tblType1").html();
+			tHtml = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").html();
 		})
 
 	})
