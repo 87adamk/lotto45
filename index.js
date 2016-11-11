@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {
 	//res.render('pages/main2');
-	res.send(cHtml);
+	res.send(tHtml);
 });
 
 app.listen(app.get('port'), function() {
