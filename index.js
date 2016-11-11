@@ -10,9 +10,8 @@ request(url, function(error, res, html){
 	if (error) {throw error};
 
 		//console.log (html);
-		cHtml = html;
-		//var $ = cheerio.load(html);
-
+		var $ = cheerio.load(html);
+		cHtml = $("table.tblType1 mt40").html();
 		//res.send(cHtml);
 });
 
