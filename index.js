@@ -7,7 +7,7 @@ var iconv = new Iconv('euc-kr', 'utf-8//translit//ignore');
 
 var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
 var crawlUrl;
-var msg;
+var msg = "";
 
 function getHistory() {
 	request({url: oriUrl, encoding: null}, function(error, res, html) {
