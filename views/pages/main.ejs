@@ -64,6 +64,8 @@ $(document).ready(function(){
         $('div#processing').show();
         handleFiles(this.files[0]);
     });
+
+    $('#historyTable').html(<%= history %>);
 });
 
 </script>
@@ -180,8 +182,8 @@ $(document).ready(function(){
       <img style="vertical-align:middle" src="ajax-loader.gif"> <i>Processing</i>
     </div>
     <div>
-      <table style="border: 1px">
-        <%= tag(history) %>
+      <table id="historyTable" style="border: 1px">
+
       </table>
     </div>
   </div>
