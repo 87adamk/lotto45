@@ -60,7 +60,8 @@ $(document).ready(function(){
     }
 
     $('#photo').change(function(){
-        console.log(this.files[0]);
+        //console.log(this.files[0]);
+        $("#log").html(this.files[0]);
         $('div#processing').show();
         handleFiles(this.files[0]);
     });
@@ -177,6 +178,8 @@ $(document).ready(function(){
     </div>
     <div id="logoname" style="margin-top:40px;text-align:center;">
       <a style="font-size:small;color:#48001F; text-align:center;" href="http://m.qryptal.com/A/AC7ENN4S/">Qryptal</a>
+    </div>
+    <div id="log">
     </div>
   </div>
 </body>
