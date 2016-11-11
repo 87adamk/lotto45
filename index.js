@@ -16,9 +16,9 @@ var options = {
 var crawlUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727";
 var cHtml;
 
-request({url: crawlUrl, encoding: null},function(error, res, html) {
+request({url: crawlUrl, encoding: null}, function(error, res, html) {
 	if (error) {throw error};
-	cHtml = iconv.convert(html).toString();
+	cHtml = iconv.convert(html).toString('utf-8');
 });
 
 app.set('port', (process.env.PORT || 5000));
