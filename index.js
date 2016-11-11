@@ -3,13 +3,13 @@ var app = express();
 var cheerio = require('cheerio');
 var request = require('request');
 var Iconv = require('iconv').Iconv;
-var iconv = new Iconv('euc-kr', "utf-8//tranlit//ignore");
+var iconv = new Iconv('euc-kr', 'utf-8//tranlit//ignore');
 
 var options = {  
-  url: 'http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727',
+  url: "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727",
   headers: {  	
     "Host": "www.nlotto.co.kr",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36",
     "Accept-Language": "ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4"
   },
    encoding: null
