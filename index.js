@@ -17,7 +17,7 @@ var crawlUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage
 var cHtml;
 
 request({url: crawlUrl, encoding: null}, function(error, res, html) {
-	if (error) {throw error};
+	if (error) {throw error}
 	cHtml = iconv.convert(html).toString('utf-8');
 });
 
