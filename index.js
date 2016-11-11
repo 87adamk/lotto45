@@ -26,7 +26,7 @@ function getHistory() {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
-			msg = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").text();
+			//msg = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").text();
 		})
 
 	})
@@ -44,13 +44,13 @@ app.get('/', function(req, res) {
 
 	getHistory();
 
- 	res.render('pages/main', {message: msg});
+ 	res.render('pages/main');
 });
 
 app.get('/test', function(req, res) {	
 
 	getHistory();
-	res.send(msg);
+	res.send();
 });
 
 app.listen(app.get('port'), function() {
