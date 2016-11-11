@@ -2,8 +2,18 @@ var express = require('express');
 var app = express();
 var cheerio = require('cheerio');
 var request = require('request');
-var url = 'http://blog.saltfactory.net';
 
+var url = 'http://blog.saltfactory.net';
+var cHtml;
+	request(url, function(error, res, html){
+		if (error) {throw error};
+
+		//console.log (html);
+		cHtml = html;
+		//var $ = cheerio.load(html);
+
+		//res.send(cHtml);
+	});
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -19,18 +29,7 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {
 
-	var cHtml;
-	request(url, function(error, res, html){
-		if (error) {throw error};
-
-		console.log (html);
-		cHtml = html;
-		var $ = cheerio.load(html);
-
-		res.send(cHtml);
-	});
-	//res.render('pages/main2');
-	res.send("Hello World");
+	res.send(cHtml);
 
 });
 
