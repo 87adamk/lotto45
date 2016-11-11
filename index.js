@@ -13,6 +13,20 @@ app.get('/', function(request, response) {
   response.render('pages/main');
 });
 
+app.get('/test') {
+
+	var cheerio = require('cheerio');
+	var request = require('request');
+
+	var url = 'http://blog.saltfactory.net';
+	request(url, function(error, response, html){
+		if (error) {throw error};
+
+		console.log (html);
+
+	});
+}
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
