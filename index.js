@@ -14,6 +14,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
+	console.log("hi");
  	res.render('pages/main');
 });
 
@@ -26,7 +27,7 @@ app.get('/test', function(req, res) {
 		console.log (html);
 
 	});
-	
+
 	res.render('pages/index');
 
 });
