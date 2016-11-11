@@ -35,7 +35,7 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {
 	
-	request({url: crawlUrl, encoding: null}, function(error, res, html) {
+	/*request({url: crawlUrl, encoding: null}, function(error, res, html) {
 		if (error) {
 			throw error
 		}
@@ -43,9 +43,9 @@ app.get('/test', function(req, res) {
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
 		tHtml = "<table>" + $("table.tblType1").html() + "</table>";
-	});
+	});*/
 
-	res.send(tHtml);
+	res.send(crawlUrl);
 });
 
 app.listen(app.get('port'), function() {
