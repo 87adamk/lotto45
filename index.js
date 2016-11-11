@@ -6,7 +6,7 @@ var Iconv = require('iconv').Iconv;
 var iconv = new Iconv('euc-kr', 'utf-8//translit//ignore');
 
 var crawlUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727";
-var cHtml;
+var tHtml;
 
 request({url: crawlUrl, encoding: null}, function(error, res, html) {
 	if (error) {
@@ -15,8 +15,7 @@ request({url: crawlUrl, encoding: null}, function(error, res, html) {
 	
 	var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 	
-	cHtml = $("table.tblType1").text();
-	//cHtml = $("#02-01-01>span").text();
+	tHtml = "<table>" + $("table.tblType1").html() + "</table>";
 	 
 });
 
