@@ -14,21 +14,23 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-	console.log("hi");
  	res.render('pages/main');
 });
 
 app.get('/test', function(req, res) {
 
-	console.log('logging test');
+	var cHtml;
 	request(url, function(error, res, html){
 		if (error) {throw error};
 
 		console.log (html);
+		cHtml = html;
+		var $ = cheerio.load(html);
 
 	});
 
-	res.render('pages/index');
+	//res.render('pages/main2');
+	res.send(cHtml);
 
 });
 
