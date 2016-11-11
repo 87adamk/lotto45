@@ -9,7 +9,7 @@ var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
 var crawlUrl;
 var tHtml;
 
-var getHistory = function() {
+function getHistory() {
 	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		
 		if (error) { throw error }
