@@ -3,17 +3,18 @@ var app = express();
 var cheerio = require('cheerio');
 var request = require('request');
 
-var url = 'http://blog.saltfactory.net';
+var url = 'http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin&nowPage=1&drwNoStart=723&drwNoEnd=727';
 var cHtml;
-	request(url, function(error, res, html){
-		if (error) {throw error};
+request(url, function(error, res, html){
+
+	if (error) {throw error};
 
 		//console.log (html);
 		cHtml = html;
 		//var $ = cheerio.load(html);
 
 		//res.send(cHtml);
-	});
+});
 
 app.set('port', (process.env.PORT || 5000));
 
