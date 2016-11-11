@@ -26,14 +26,7 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {
 
-
-
-	request({url: crawlUrl, encoding: null}, function(error, res, html) {
-		if (error) {
-			throw error
-		}
-		
-		request({url: oriUrl, encoding: null}, function(error, res, html) {
+	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		if (error) {
 			throw error
 		}
@@ -44,6 +37,13 @@ app.get('/test', function(req, res) {
 		var firstNum  = lastNum-4;
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
 		})
+
+	request({url: crawlUrl, encoding: null}, function(error, res, html) {
+		if (error) {
+			throw error
+		}
+		
+		
 
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
