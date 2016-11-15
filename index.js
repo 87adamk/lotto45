@@ -59,11 +59,11 @@ app.get('/test', function(req, res) {
 	console.log("msg : " + msg);
 	res.send(msg);*/
 
-	request({url: crawlUrl, encoding: null}, function(error, res, html) {
+	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		
 			console.log("getHistory sub Start");
 
-			if (error) { throw error; }
+			if (error) { throw error }
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
