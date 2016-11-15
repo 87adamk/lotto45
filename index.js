@@ -9,7 +9,23 @@ var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
 var crawlUrl;
 var msg = "";
 
-function getHistory(msg) {
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res) {
+
+	//getHistory();
+
+ 	res.render('pages/main');
+});
+
+app.get('/test', function(req, res) {	
+
 	request({url: oriUrl, encoding: null}, function(error, res, html, msg) {
 		
 		console.log("getHistory Start");
@@ -33,32 +49,14 @@ function getHistory(msg) {
 			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
 
 			console.log("getHistory sub END");
+			console.log(msg);
 		});
 
 		console.log("getHistory END");
 
 	});
-}
 
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(req, res) {
-
-	//getHistory();
-
- 	res.render('pages/main');
-});
-
-app.get('/test', function(req, res) {	
-
-	getHistory(msg);
-	console.log(msg);
+	console.log("msg : " + msg);
 	res.send(msg);
 });
 
