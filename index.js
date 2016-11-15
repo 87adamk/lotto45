@@ -26,11 +26,11 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {	
 
-	/*request({url: oriUrl, encoding: null}, function(error, res, html) {
+	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		
 		console.log("getHistory Start");
 
-		if (error) { throw error; }
+		if (error) { throw error }
 		
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 		
@@ -42,14 +42,13 @@ app.get('/test', function(req, res) {
 		
 			console.log("getHistory sub Start");
 
-			if (error) { throw error; }
+			if (error) { throw error }
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
 			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
 
 			console.log("getHistory sub END");
-			console.log(msg);
 		});
 
 		console.log("getHistory END");
@@ -57,22 +56,6 @@ app.get('/test', function(req, res) {
 	});
 
 	console.log("msg : " + msg);
-	res.send(msg);*/
-
-	request({url: oriUrl, encoding: null}, function(error, res, html) {
-		
-			console.log("getHistory sub Start");
-
-			if (error) { throw error }
-			
-			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
-					
-			
-			msg = $("table.tblType1 > tbody > tr:gt(0):not(7) > td:nth-child(2)").text();
-
-			console.log("getHistory sub END");
-			console.log(msg);
-		});
 	res.send(msg);
 });
 
