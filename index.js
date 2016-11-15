@@ -49,27 +49,7 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {	
 
-	request({url: oriUrl, encoding: null}, function(error, res, html) {
-		
-		if (error) { throw error }
-		
-		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
-		
-		var lastNum  = parseInt($("#drwNoEnd").val());
-		var firstNum  = lastNum-4;
-		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
-
-		request({url: crawlUrl, encoding: null}, function(error, res, html) {
-			
-			if (error) { throw error }
-			
-			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
-					
-			msg = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").text();
-		})
-
-	});
-	
+	msg = "ㄴ마인마입자   ㅇㅇ";
 	res.send(msg);
 });
 
