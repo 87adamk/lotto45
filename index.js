@@ -45,9 +45,9 @@ function getHistory(callback) {
 
 app.get('/', function(req, res) {
 
-	//getHistory();
-
- 	res.render('pages/main');
+	getHistory(function (){
+		res.render('pages/main', {list: msg});
+	}); 	
 });
 
 app.get('/test', function(req, res) {	
