@@ -67,8 +67,8 @@ app.get('/test', function(req, res) {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
-					msg = iconv.convert(html).toString('utf-8');
-			//msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
+			
+			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
 
 			console.log("getHistory sub END");
 			console.log(msg);
