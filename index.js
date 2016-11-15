@@ -26,7 +26,7 @@ function getHistory() {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
-			//msg = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").text();
+			msg = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").text();
 		})
 
 	})
@@ -47,11 +47,11 @@ app.get('/', function(req, res) {
  	res.render('pages/main');
 });
 
-/*app.get('/test', function(req, res) {	
+app.get('/test', function(req, res) {	
 
 	getHistory();
-	res.send();
-});*/
+	res.send(msg);
+});
 
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
