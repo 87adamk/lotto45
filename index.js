@@ -26,6 +26,15 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {	
 
+	
+
+	console.log("msg : " + msg);
+	res.send(msg);
+});
+
+app.listen(app.get('port'), function() {
+	console.log('Node app is running on port', app.get('port'));
+
 	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		
 		console.log("getHistory Start");
@@ -54,13 +63,6 @@ app.get('/test', function(req, res) {
 		console.log("getHistory END");
 
 	});
-
-	console.log("msg : " + msg);
-	res.send(msg);
-});
-
-app.listen(app.get('port'), function() {
-	console.log('Node app is running on port', app.get('port'));
 });
 
 
