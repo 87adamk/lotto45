@@ -34,7 +34,9 @@ function getHistory(callback) {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
-			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
+			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(){
+				msg += $(this).text() + "|";
+			})
 
 			callback();
 		});
