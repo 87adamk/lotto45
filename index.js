@@ -12,6 +12,8 @@ var msg = "";
 function getHistory(msg) {
 	request({url: oriUrl, encoding: null}, function(error, res, html, msg) {
 		
+		console.log("getHistory Start");
+
 		if (error) { throw error }
 		
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
@@ -21,13 +23,19 @@ function getHistory(msg) {
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
 
 		request({url: crawlUrl, encoding: null}, function(error, res, html, msg) {
-			
+		
+			console.log("getHistory sub Start");
+
 			if (error) { throw error }
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 					
-			msg = $("table.tblType1 > tbody > tr:gt(0):lt(6) > td:nth-child(2)").text();
+			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
+
+			console.log("getHistory sub END");
 		});
+
+		console.log("getHistory END");
 
 	});
 }
