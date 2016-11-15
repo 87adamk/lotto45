@@ -52,13 +52,13 @@ function getHistory(callback) {
 
 app.get('/', function(req, res) {
 
-	getHistory(function (){
-		res.render('pages/main', {list: msg});
-	}); 	
+	res.render('pages/main', {list: msg});
 });
 
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
+
+	getHistory(function(){};);
 });
 
 
