@@ -39,7 +39,7 @@ function getHistory(callback) {
 			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(index){
 
 				msg += "<li>";
-				msg += (lastNum-index-1)+"회차 "+$(this).text();
+				msg += (lastNum-index)+"회차 "+$(this).text();
 				msg += "</li>";
 			})
 
