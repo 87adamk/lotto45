@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-function getHistory() {
+function getHistory(callback) {
 	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		
 		if (error) { throw error }
@@ -36,21 +36,24 @@ function getHistory() {
 					
 			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
 
-			$("#test").val(msg);
+			callback();
 		});
 	});
-}
+};
 
 app.get('/', function(req, res) {
 
-	getHistory();
+	//getHistory();
 
  	res.render('pages/main');
 });
 
 app.get('/test', function(req, res) {	
 
-	res.send(msg);
+	getHistory(function () {
+		res.send(msg);
+	});
+	
 });
 
 app.listen(app.get('port'), function() {
