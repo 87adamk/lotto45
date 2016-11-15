@@ -9,8 +9,8 @@ var oriUrl = "http://www.nlotto.co.kr/lotto645Confirm.do?method=allWin";
 var crawlUrl;
 var msg = "";
 
-function getHistory() {
-	request({url: oriUrl, encoding: null}, function(error, res, html) {
+function getHistory(msg) {
+	request({url: oriUrl, encoding: null}, function(error, res, html, msg) {
 		
 		if (error) { throw error }
 		
@@ -20,7 +20,7 @@ function getHistory() {
 		var firstNum  = lastNum-4;
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
 
-		request({url: crawlUrl, encoding: null}, function(error, res, html) {
+		request({url: crawlUrl, encoding: null}, function(error, res, html, msg) {
 			
 			if (error) { throw error }
 			
@@ -49,8 +49,8 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {	
 
-	msg = "ㄴ마인마입자   ㅇㅇ";
-	console.log("log test");
+	getHistory(msg);
+	console.log(msg);
 	res.send(msg);
 });
 
