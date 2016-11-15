@@ -52,11 +52,11 @@ app.get('/test', function(req, res) {
 		});
 
 		console.log("getHistory END");
-
-		console.log("msg : " + msg);
 		res.send(msg);
-
 	});
+
+	console.log("msg : " + msg);
+	res.send(msg);
 });
 
 app.listen(app.get('port'), function() {
