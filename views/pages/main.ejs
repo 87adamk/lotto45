@@ -65,11 +65,14 @@ $(document).ready(function(){
         handleFiles(this.files[0]);
     });
 
+    $('#historySection').html($('#historyList').val());
+
 });
 
 </script>
 
 <script type="text/javascript">
+
   function mobileResize() {
     var myWidth = 0, myHeight = 0;
 
@@ -181,7 +184,10 @@ $(document).ready(function(){
       <img style="vertical-align:middle" src="ajax-loader.gif"> <i>Processing</i>
     </div>
     <div>
-      <%= list %>
+      <input type="hidden" value="<%= list %>" id="historyList"/>
+      <h5>최근 당첨 리스트</h5>
+      <span id="historySection">
+      </span>
     </div>
   </div>
 </body>

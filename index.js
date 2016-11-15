@@ -33,11 +33,18 @@ function getHistory(callback) {
 			if (error) { throw error }
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
-					
+			
+			msg = "<ul>";
+
 			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(){
-				msg += $(this).text() + "|";
+
+				msg += "<li>";
+				msg += $(this).text();
+				msg += "</li>";
 			})
 
+			msg += "</ul>";
+			
 			callback();
 		});
 	});
@@ -48,15 +55,6 @@ app.get('/', function(req, res) {
 	getHistory(function (){
 		res.render('pages/main', {list: msg});
 	}); 	
-});
-
-app.get('/test', function(req, res) {	
-
-	getHistory(function () {
-		res.send(msg);
-	});
-	
-	res.send();
 });
 
 app.listen(app.get('port'), function() {
