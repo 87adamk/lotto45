@@ -50,6 +50,7 @@ app.get('/', function(req, res) {
 app.get('/test', function(req, res) {	
 
 	msg = "ㄴ마인마입자   ㅇㅇ";
+	console.log("log test");
 	res.send(msg);
 });
 
