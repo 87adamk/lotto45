@@ -36,15 +36,15 @@ function getHistory(callback) {
 			
 			msg = "<ul>";
 
-			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(){
+			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(index){
 
 				msg += "<li>";
-				msg += $(this).text();
+				msg += (lastNum-index-1)+"회차 "+$(this).text();
 				msg += "</li>";
 			})
 
 			msg += "</ul>";
-			
+
 			callback();
 		});
 	});
