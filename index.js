@@ -17,19 +17,9 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res) {
-
-	//getHistory();
-
- 	res.render('pages/main');
-});
-
-app.get('/test', function(req, res) {	
-
+function getHistory() {
 	request({url: oriUrl, encoding: null}, function(error, res, html) {
 		
-		console.log("getHistory Start");
-
 		if (error) { throw error }
 		
 		var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
@@ -38,9 +28,7 @@ app.get('/test', function(req, res) {
 		var firstNum  = lastNum-4;
 		crawlUrl = oriUrl+"&nowPage=1&drwNoStart="+firstNum+"&drwNoEnd="+lastNum;
 
-		request({url: crawlUrl, encoding: null}, function(error, res, html) {
-		
-			console.log("getHistory sub Start");
+		request({url: crawlUrl, encoding: null}, function(error, res, html) {		
 
 			if (error) { throw error }
 			
@@ -48,14 +36,20 @@ app.get('/test', function(req, res) {
 					
 			msg = $("table.tblType1 > tbody > tr > td:nth-child(2)").text();
 
-			console.log("getHistory sub END");
+			$("#test").val(msg);
 		});
-
-		console.log("getHistory END");
-		res.send(msg);
 	});
+}
 
-	console.log("msg : " + msg);
+app.get('/', function(req, res) {
+
+	getHistory();
+
+ 	res.render('pages/main');
+});
+
+app.get('/test', function(req, res) {	
+
 	res.send(msg);
 });
 
