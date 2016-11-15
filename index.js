@@ -56,6 +56,7 @@ app.get('/test', function(req, res) {
 		res.send(msg);
 	});
 	
+	res.send();
 });
 
 app.listen(app.get('port'), function() {
