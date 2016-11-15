@@ -49,8 +49,10 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res) {	
 
-	getHistory();
-	res.send(msg);
+	getHistory(function(){
+		res.send(msg);	
+	});
+	
 });
 
 app.listen(app.get('port'), function() {
