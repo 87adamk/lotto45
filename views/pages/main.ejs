@@ -66,10 +66,18 @@ $(document).ready(function(){
     });
 
     $.ajax({
-      url: '/getHistory'
+      url: '/getHistory',
+      success: fucnction(data){
+        $.each(data, function(index, element){
+            $("#historySection").append(element.number);
+        });
+      },
+      error: function(data){
+        alert("최근 당첨 조회 불러오기 실패");
+      }
+
     }).done(function(data){
-      alert(data);
-      alert(data['list'][0].seq +"/"+ data['list'][0].number);
+      
     })
 
 });
