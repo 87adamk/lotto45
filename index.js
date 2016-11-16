@@ -37,8 +37,8 @@ function getHistory(callback) {
 			msg = "[";
 
 			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(index){
-				msg += "{seq:"+(lastNum-index)+"회차,";
-				msg += "number:"+$(this).text()+"},";
+				msg += '{"seq":'+'"'+(lastNum-index)+'회차",';
+				msg += '"number":'+'"'+$(this).text()+'"},';
 			})
 
 			msg = msg.substring(0,msg.length-1);
