@@ -69,7 +69,7 @@ $(document).ready(function(){
       url: '/getHistory',
       success: fucnction(data){
         $.each(data, function(index, element){
-            $("#historySection").append(element.number);
+           alert(element.number);
         });
       },
       error: function(data){
