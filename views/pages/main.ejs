@@ -169,13 +169,14 @@ $(document).ready(function(){
   function makeNumber() {
      
       var makeCount = parseInt($("#lottoCount").val());
-      var lotto = new Array( new Array(makeCount), new Array(6));
+      var lotto = new Array(makeCount);
       var count = 0;
       var mFlag = true;
      
      for(var idx=0; idx<makeCount; idx++) {
 
-         count = 0;
+        lotto[idx] = new Array(6);
+        count = 0;
 
          while(count < 6)
          {
