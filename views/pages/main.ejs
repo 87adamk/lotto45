@@ -142,6 +142,26 @@ $(document).ready(function(){
       } while (swapped);
   }
 
+  function minus() {
+    var count = $("#lottoCount").val();
+
+    if(count > 1) {
+      count -= 1;
+    }
+
+    $("#lottoCount").val(count);
+  }
+
+  function plus() {
+   var count = $("#lottoCount").val();
+
+    if(count < 5) {
+      count += 1;
+    }
+
+    $("#lottoCount").val(count); 
+  }
+
   function makeNumber() {
      // 6°³ÀÇ ·Î¶Ç ¹øÈ£¸¦ ÀúÀåÇÒ ¹è¿­
       var lotto = new Array(6);
@@ -189,6 +209,9 @@ $(document).ready(function(){
         <font size="100">Lotto 45</font>
       </div>
       <div style="text-align: right; margin: 20px">
+        <button onclick="minus();">-</button>
+        <input type="text" name="1" readonly="readonly" id="lottoCount">
+        <button onclick="plus();">+</button>
         <button onclick="makeNumber();" style="width: 200px;">생성</button>
       </div>
       <div style="text-align: center;">
