@@ -68,8 +68,8 @@ $(document).ready(function(){
     $.ajax({
       url: '/getHistory',
       success: function(data){
-        alert(data[0].seq);
-        $.each(data,function(k,v){
+        var json = $.parseJSON(data);
+        $.each(json,function(k,v){
           alert(k+" : "+ v);
           });
       },
