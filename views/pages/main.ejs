@@ -69,12 +69,16 @@ $(document).ready(function(){
       url: '/getHistory',
       success: function(data){
         var json = $.parseJSON(data);
+        var list = "<ul>";
         $.each(json,function(index,element){
-          alert(element.seq+"/"+element.number);
+             list += "<li>"+ element.seq +"   "+ element.number+"</li>";
           });
+
+        list = "/<ul>";
+        $("#historySection").html(list);
       },
       error: function(data){
-        alert("최근 당첨 조회 불러오기 실패");
+        $("#historySection").text("최근 당첨 리스트 조회 실패");
       }
 
     }).done(function(data){
@@ -201,6 +205,7 @@ $(document).ready(function(){
       <input type="hidden" value="<%= list %>" id="historyList"/>
       <h3>최근 당첨 리스트</h5>
       <span id="historySection">
+        리스트 불러오는 중.
       </span>
     </div>
   </div>
