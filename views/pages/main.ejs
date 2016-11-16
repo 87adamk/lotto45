@@ -67,7 +67,7 @@ $(document).ready(function(){
 
     $.ajax({
       url: '/getHistory',
-      success: fucnction(data){
+      success: function(data){
         $.each(data, function(index, element){
            alert(element.number);
         });
