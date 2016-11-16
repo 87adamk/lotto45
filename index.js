@@ -34,7 +34,7 @@ function getHistory(callback) {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 			
-			msg = "{list:[";
+			msg = "[";
 
 			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(index){
 				msg += "{seq:"+(lastNum-index)+"회차,";
@@ -43,7 +43,7 @@ function getHistory(callback) {
 
 			msg = msg.substring(0,msg.length-1);
 
-			msg += "]}";
+			msg += "]";
 
 			callback();
 		});
