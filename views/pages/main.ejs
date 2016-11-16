@@ -194,8 +194,7 @@ $(document).ready(function(){
          bubbleSort(lotto[idx]);
 
          for(var i=0; i<6; i++) {
-
-            var id = "number_field_"+idx+"_"+(i+1);
+            var id = "number_field_"+(idx+1)+"_"+(i+1);
             $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[idx][i]+".png");
             $("#"+id).attr("alt", lotto[idx][i]);
          }
