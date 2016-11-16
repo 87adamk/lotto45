@@ -69,8 +69,8 @@ $(document).ready(function(){
       url: '/getHistory',
       success: function(data){
         var json = $.parseJSON(data);
-        $.each(json,function(k,v){
-          alert(k+" : "+ v);
+        $.each(json,function(index,element){
+          alert(element.seq+"/"+element.number);
           });
       },
       error: function(data){
