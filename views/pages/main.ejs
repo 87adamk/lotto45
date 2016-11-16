@@ -69,7 +69,7 @@ $(document).ready(function(){
       url: '/getHistory'
     }).done(function(data){
       alert(data);
-      alert(data[0].seq +"/"+ data[0].number);
+      alert(data['list'][0].seq +"/"+ data['list'][0].number);
     })
 
 });
