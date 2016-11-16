@@ -68,9 +68,8 @@ $(document).ready(function(){
     $.ajax({
       url: '/getHistory',
       success: function(data){
-        $.each(data, function(index, element){
-           alert(element.number);
-        });
+        alert(data.length);
+        alert(data[0].number);
       },
       error: function(data){
         alert("최근 당첨 조회 불러오기 실패");
