@@ -65,7 +65,16 @@ $(document).ready(function(){
         handleFiles(this.files[0]);
     });
 
-    $.ajax({
+    getHistory();
+
+});
+
+</script>
+
+<script type="text/javascript">
+
+  function getHistory() {
+      $.ajax({
       url: '/getHistory',
       success: function(data){
         var json = $.parseJSON(data);
@@ -83,13 +92,8 @@ $(document).ready(function(){
 
     }).done(function(data){
 
-    })
-
-});
-
-</script>
-
-<script type="text/javascript">
+    });
+  }
 
   function convertNumberToImg(numberlist) {
    
@@ -164,37 +168,41 @@ $(document).ready(function(){
 
   function makeNumber() {
      // 6°³ÀÇ ·Î¶Ç ¹øÈ£¸¦ ÀúÀåÇÒ ¹è¿­
-      var lotto = new Array(6);
+      var lotto = new Array( new Array(5), new Array(6));
      // ÃßÃ·µÈ ·Î¶Ç¹øÈ£ÀÇ °¹¼ö
+      var makeCount = parseInt($("#lottoCount").val());
       var count = 0;
      // ¹øÈ£Áßº¹ ¹æÁö¿ë º¯¼ö
      var mFlag = true;
      // 6°³ÀÇ ·Î¶Ç¹øÈ£¸¦ ¾òÀ»¶§±îÁö ¹Ýº¹
-     while(count < 6)
-     {
-       var number;
-       // ·£´ý¹øÈ£ ÃßÃâ
-       number = parseInt(Math.random()*45)+1
-       // Áßº¹È®ÀÎ
-       for(var i=0; i<count; i++)
-          if(lotto[i] == number) mFlag = false;
-       // Áßº¹µÈ ¹øÈ£°¡ ¾Æ´Ï¸é ·Î¶Ç ¹øÈ£¹è¿­¿¡ Ãß°¡
-       if(mFlag)
-       {
-            lotto[count] = number;
-            count++;
-       }
-       mFlag = true;
-     } 
 
-     bubbleSort(lotto);
+     for(var i=0; i<makeCount; i++) {
+         while(count < 6)
+         {
+           var number;
+           // ·£´ý¹øÈ£ ÃßÃâ
+           number = parseInt(Math.random()*45)+1
+           // Áßº¹È®ÀÎ
+           for(var i=0; i<count; i++)
+              if(lotto[makeCount][i] == number) mFlag = false;
+           // Áßº¹µÈ ¹øÈ£°¡ ¾Æ´Ï¸é ·Î¶Ç ¹øÈ£¹è¿­¿¡ Ãß°¡
+           if(mFlag)
+           {
+                lotto[makeCount][count] = number;
+                count++;
+           }
+           mFlag = true;
+         } 
 
-     for(var i=0; i<6; i++) {
+         bubbleSort(lotto[makeCount]);
 
-        var id = "number_field_"+(i+1);
-        $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[i]+".png");
-        $("#"+id).attr("alt", lotto[i]);
-     }
+         for(var i=0; i<6; i++) {
+
+            var id = "number_field_"+makeCount+"_"+(i+1);
+            $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[makeCount][i]+".png");
+            $("#"+id).attr("alt", lotto[i]);
+         }
+      }
   }
 
   function loadCamera() {
@@ -210,17 +218,49 @@ $(document).ready(function(){
       </div>
       <div style="text-align: right; margin: 20px">
         <button onclick="minus();">-</button>
-        <input type="text" value="1" readonly="readonly" id="lottoCount" style="width: 10px">
+        <input type="text" value="1" readonly="readonly" id="lottoCount" style="width: 30px">
         <button onclick="plus();">+</button>
         <button onclick="makeNumber();" style="width: 200px;">생성</button>
       </div>
       <div style="text-align: center;">
-        <img id="number_field_1"/>
-        <img id="number_field_2"/>
-        <img id="number_field_3"/>
-        <img id="number_field_4"/>
-        <img id="number_field_5"/>
-        <img id="number_field_6"/>
+        <img id="number_field_1_1"/>
+        <img id="number_field_1_2"/>
+        <img id="number_field_1_3"/>
+        <img id="number_field_1_4"/>
+        <img id="number_field_1_5"/>
+        <img id="number_field_1_6"/>
+      </div>
+      <div style="text-align: center;">
+        <img id="number_field_2_1"/>
+        <img id="number_field_2_2"/>
+        <img id="number_field_2_3"/>
+        <img id="number_field_2_4"/>
+        <img id="number_field_2_5"/>
+        <img id="number_field_2_6"/>
+      </div>
+      <div style="text-align: center;">
+        <img id="number_field_3_1"/>
+        <img id="number_field_3_2"/>
+        <img id="number_field_3_3"/>
+        <img id="number_field_3_4"/>
+        <img id="number_field_3_5"/>
+        <img id="number_field_3_6"/>
+      </div>
+      <div style="text-align: center;">
+        <img id="number_field_4_1"/>
+        <img id="number_field_4_2"/>
+        <img id="number_field_4_3"/>
+        <img id="number_field_4_4"/>
+        <img id="number_field_4_5"/>
+        <img id="number_field_4_6"/>
+      </div>
+      <div style="text-align: center;">
+        <img id="number_field_5_1"/>
+        <img id="number_field_5_2"/>
+        <img id="number_field_5_3"/>
+        <img id="number_field_5_4"/>
+        <img id="number_field_5_5"/>
+        <img id="number_field_5_6"/>
       </div>
     </div>
 
