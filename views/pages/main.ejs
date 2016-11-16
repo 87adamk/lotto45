@@ -65,12 +65,10 @@ $(document).ready(function(){
         handleFiles(this.files[0]);
     });
 
-    /*$('#historySection').html($('#historyList').val());*/
-
     $.ajax({
       url: '/getHistory'
     }).done(function(data){
-      alert(data.a);
+      alert(data[0].seq +"/"+ data[0].number);
     })
 
 });

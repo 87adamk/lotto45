@@ -34,16 +34,16 @@ function getHistory(callback) {
 			
 			var $ = cheerio.load(iconv.convert(html).toString('utf-8'));
 			
-			msg = "<ul>";
+			msg = "list:[";
 
 			$("table.tblType1 > tbody > tr > td:nth-child(2)").each(function(index){
-
-				msg += "<li>";
-				msg += (lastNum-index)+"회차 "+$(this).text();
-				msg += "</li>";
+				msg += "{seq:"+(lastNum-index)+"회차,";
+				msg += "number:"+$(this).text()+"},";
 			})
 
-			msg += "</ul>";
+			msg = msg.substring(0,msg.length-1);
+
+			msg += "]";
 
 			callback();
 		});
@@ -55,8 +55,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/getHistory', function(req, res) {
-	res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({ a: 1 }, null, 3));
+
+	getHistory(function(){
+		res.setHeader('Content-Type', 'application/json');
+	    res.send(JSON.stringify(msg));
+	});
 });
 
 app.listen(app.get('port'), function() {
