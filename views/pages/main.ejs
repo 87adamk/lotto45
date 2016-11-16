@@ -65,7 +65,13 @@ $(document).ready(function(){
         handleFiles(this.files[0]);
     });
 
-    $('#historySection').html($('#historyList').val());
+    /*$('#historySection').html($('#historyList').val());*/
+
+    $.ajax({
+      url: '/getHistory'
+    }).done(function(data){
+      alert(data);
+    })
 
 });
 
