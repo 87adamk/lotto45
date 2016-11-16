@@ -173,7 +173,7 @@ $(document).ready(function(){
       var count = 0;
       var mFlag = true;
      
-     for(var i=0; i<makeCount; i++) {
+     for(var idx=0; idx<makeCount; idx++) {
          while(count < 6)
          {
            var number;
@@ -181,23 +181,23 @@ $(document).ready(function(){
            number = parseInt(Math.random()*45)+1
      
            for(var i=0; i<count; i++)
-              if(lotto[makeCount][i] == number) mFlag = false;
+              if(lotto[idx][i] == number) mFlag = false;
      
            if(mFlag)
            {
-                lotto[makeCount][count] = number;
+                lotto[idx][count] = number;
                 count++;
            }
            mFlag = true;
          } 
 
-         bubbleSort(lotto[makeCount]);
+         bubbleSort(lotto[idx]);
 
          for(var i=0; i<6; i++) {
 
-            var id = "number_field_"+makeCount+"_"+(i+1);
-            $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[makeCount][i]+".png");
-            $("#"+id).attr("alt", lotto[i]);
+            var id = "number_field_"+idx+"_"+(i+1);
+            $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[idx][i]+".png");
+            $("#"+id).attr("alt", lotto[idx][i]);
          }
       }
   }
