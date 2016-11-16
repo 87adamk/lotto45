@@ -71,7 +71,7 @@ $(document).ready(function(){
         var json = $.parseJSON(data);
         var list = "<ul>";
         $.each(json,function(index,element){
-             list += "<li>"+ element.seq +"   "+ element.number+"</li>";
+             list += "<li>"+ element.seq +"   "+ convertNumberToImg(element.number)+"</li>";
           });
 
         list += "</ul>";
@@ -82,7 +82,7 @@ $(document).ready(function(){
       }
 
     }).done(function(data){
-      hi();
+
     })
 
 });
@@ -91,9 +91,19 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 
-  function hi() {
-    alert("tt");
+  function convertNumberToImg(numberlist) {
+   
+    var numArray = numberlist.split(",");
+    var imgList = "";
+
+    for(var i=0; i<numArray.length; i++) {
+      
+      imgList += '<img src'+'"http://www.nlotto.co.kr/img/common/ball_'+numArray[i]+'.png"/>';
+    }    
+
+    return imgList;
   }
+
   function mobileResize() {
     var myWidth = 0, myHeight = 0;
 
