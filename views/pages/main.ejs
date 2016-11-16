@@ -68,7 +68,7 @@ $(document).ready(function(){
     $.ajax({
       url: '/getHistory',
       success: function(data){
-        alert(data);
+        alert(data.seq);
         $.each(data,function(k,v){
           alert(k+" : "+ v);
           });
