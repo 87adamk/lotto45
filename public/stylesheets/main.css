@@ -24,8 +24,9 @@
     border: 2px solid white; }
     .jumbotron .lang-logo img {
       max-width: 100%; }
-.ball {
+img.ball {
   width: 33px;
   height: 33px;
-  border: none;
+  border: none !important;
+  background: none !important;
 }
