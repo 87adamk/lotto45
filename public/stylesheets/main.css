@@ -30,3 +30,8 @@ img.ball {
   border: none !important;
   background: none !important;
 }
+
+.number_section {
+  text-align: center;
+  display: none;
+}

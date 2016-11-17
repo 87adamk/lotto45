@@ -205,6 +205,7 @@ $(document).ready(function(){
             var id = "number_field_"+(idx+1)+"_"+(i+1);
             $("#"+id).attr("src", "ball/ball_"+lotto[idx][i]+".png");
             $("#"+id).attr("alt", lotto[idx][i]);
+            $("#number_section_"+(idx+1)).show();
          }
       }
   }
@@ -226,7 +227,7 @@ $(document).ready(function(){
         <button onclick="plus();">+</button>
         <button onclick="makeNumber();" style="width: 200px;">생성</button>
       </div>
-      <div style="text-align: center;">
+      <div class="number_section" id="number_section_1">
         <img class="ball" id="number_field_1_1"/>
         <img class="ball" id="number_field_1_2"/>
         <img class="ball" id="number_field_1_3"/>
@@ -234,7 +235,7 @@ $(document).ready(function(){
         <img class="ball" id="number_field_1_5"/>
         <img class="ball" id="number_field_1_6"/>
       </div>
-      <div style="text-align: center;">
+      <div class="number_section" id="number_section_2">
         <img class="ball" id="number_field_2_1"/>
         <img class="ball" id="number_field_2_2"/>
         <img class="ball" id="number_field_2_3"/>
@@ -242,7 +243,7 @@ $(document).ready(function(){
         <img class="ball" id="number_field_2_5"/>
         <img class="ball" id="number_field_2_6"/>
       </div>
-      <div style="text-align: center;">
+      <div class="number_section" id="number_section_3">
         <img class="ball" id="number_field_3_1"/>
         <img class="ball" id="number_field_3_2"/>
         <img class="ball" id="number_field_3_3"/>
@@ -250,7 +251,7 @@ $(document).ready(function(){
         <img class="ball" id="number_field_3_5"/>
         <img class="ball" id="number_field_3_6"/>
       </div>
-      <div style="text-align: center;">
+      <div class="number_section" id="number_section_4">
         <img class="ball" id="number_field_4_1"/>
         <img class="ball" id="number_field_4_2"/>
         <img class="ball" id="number_field_4_3"/>
@@ -258,7 +259,7 @@ $(document).ready(function(){
         <img class="ball" id="number_field_4_5"/>
         <img class="ball" id="number_field_4_6"/>
       </div>
-      <div style="text-align: center;">
+      <div class="number_section" id="number_section_5">
         <img class="ball" id="number_field_5_1"/>
         <img class="ball" id="number_field_5_2"/>
         <img class="ball" id="number_field_5_3"/>
