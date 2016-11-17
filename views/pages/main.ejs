@@ -77,6 +77,8 @@ $(document).ready(function(){
       $.ajax({
       url: '/getHistory',
       success: function(data){
+        if(data == null) return;
+
         var json = $.parseJSON(data);
         var list = "<ul>";
         $.each(json,function(index,element){
@@ -91,7 +93,9 @@ $(document).ready(function(){
       }
 
     }).done(function(data){
-
+      if(data == null) {
+        $("#historySection").text("최근 당첨 리스트 조회 실패");
+      }
     });
   }
 
@@ -102,7 +106,7 @@ $(document).ready(function(){
 
     for(var i=0; i<numArray.length; i++) {
       
-      imgList += '<img src="http://www.nlotto.co.kr/img/common/ball_'+numArray[i].trim()+'.png"/>';
+      imgList += '<img class="ball" src="http://www.nlotto.co.kr/img/common/ball_'+numArray[i].trim()+'.png"/>';
     }    
 
     return imgList;
@@ -223,44 +227,44 @@ $(document).ready(function(){
         <button onclick="makeNumber();" style="width: 200px;">생성</button>
       </div>
       <div style="text-align: center;">
-        <img id="number_field_1_1"/>
-        <img id="number_field_1_2"/>
-        <img id="number_field_1_3"/>
-        <img id="number_field_1_4"/>
-        <img id="number_field_1_5"/>
-        <img id="number_field_1_6"/>
+        <img class="ball" id="number_field_1_1"/>
+        <img class="ball" id="number_field_1_2"/>
+        <img class="ball" id="number_field_1_3"/>
+        <img class="ball" id="number_field_1_4"/>
+        <img class="ball" id="number_field_1_5"/>
+        <img class="ball" id="number_field_1_6"/>
       </div>
       <div style="text-align: center;">
-        <img id="number_field_2_1"/>
-        <img id="number_field_2_2"/>
-        <img id="number_field_2_3"/>
-        <img id="number_field_2_4"/>
-        <img id="number_field_2_5"/>
-        <img id="number_field_2_6"/>
+        <img class="ball" id="number_field_2_1"/>
+        <img class="ball" id="number_field_2_2"/>
+        <img class="ball" id="number_field_2_3"/>
+        <img class="ball" id="number_field_2_4"/>
+        <img class="ball" id="number_field_2_5"/>
+        <img class="ball" id="number_field_2_6"/>
       </div>
       <div style="text-align: center;">
-        <img id="number_field_3_1"/>
-        <img id="number_field_3_2"/>
-        <img id="number_field_3_3"/>
-        <img id="number_field_3_4"/>
-        <img id="number_field_3_5"/>
-        <img id="number_field_3_6"/>
+        <img class="ball" id="number_field_3_1"/>
+        <img class="ball" id="number_field_3_2"/>
+        <img class="ball" id="number_field_3_3"/>
+        <img class="ball" id="number_field_3_4"/>
+        <img class="ball" id="number_field_3_5"/>
+        <img class="ball" id="number_field_3_6"/>
       </div>
       <div style="text-align: center;">
-        <img id="number_field_4_1"/>
-        <img id="number_field_4_2"/>
-        <img id="number_field_4_3"/>
-        <img id="number_field_4_4"/>
-        <img id="number_field_4_5"/>
-        <img id="number_field_4_6"/>
+        <img class="ball" id="number_field_4_1"/>
+        <img class="ball" id="number_field_4_2"/>
+        <img class="ball" id="number_field_4_3"/>
+        <img class="ball" id="number_field_4_4"/>
+        <img class="ball" id="number_field_4_5"/>
+        <img class="ball" id="number_field_4_6"/>
       </div>
       <div style="text-align: center;">
-        <img id="number_field_5_1"/>
-        <img id="number_field_5_2"/>
-        <img id="number_field_5_3"/>
-        <img id="number_field_5_4"/>
-        <img id="number_field_5_5"/>
-        <img id="number_field_5_6"/>
+        <img class="ball" id="number_field_5_1"/>
+        <img class="ball" id="number_field_5_2"/>
+        <img class="ball" id="number_field_5_3"/>
+        <img class="ball" id="number_field_5_4"/>
+        <img class="ball" id="number_field_5_5"/>
+        <img class="ball" id="number_field_5_6"/>
       </div>
     </div>
 
