@@ -106,7 +106,7 @@ $(document).ready(function(){
 
     for(var i=0; i<numArray.length; i++) {
       
-      imgList += '<img class="ball" src="http://www.nlotto.co.kr/img/common/ball_'+numArray[i].trim()+'.png"/>';
+      imgList += '<img class="ball" src="ball/ball_'+numArray[i].trim()+'.png"/>';
     }    
 
     return imgList;
@@ -203,7 +203,7 @@ $(document).ready(function(){
 
          for(var i=0; i<6; i++) {
             var id = "number_field_"+(idx+1)+"_"+(i+1);
-            $("#"+id).attr("src", "http://www.nlotto.co.kr/img/common/ball_"+lotto[idx][i]+".png");
+            $("#"+id).attr("src", "ball/ball_"+lotto[idx][i]+".png");
             $("#"+id).attr("alt", lotto[idx][i]);
          }
       }
